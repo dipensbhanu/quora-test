@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quora</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% if user_signed_in? %>
+      <%= link_to "Logout", destroy_user_session_url, method: :delete %>
+    <% end %>
+
+    <p>
+      <%= flash[:notice] %>
+      <%= flash[:alert] %>
+    </p>
+
+    <%= yield %>
+  </body>
+</html>

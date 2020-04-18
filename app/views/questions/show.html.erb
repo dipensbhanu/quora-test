@@ -1,0 +1,23 @@
+<div class="queston_header">
+  <h1>
+    <%= link_to @question.title, question_path(@question.slug), class: "question" %>
+  </h1>
+</div>
+<div class="question_answers">
+  <ul>
+  	<% @question.answers.each do |answer| -%>
+    <li class="answer">
+      <%= answer.body %>
+      <hr/>
+      <span>
+        <strong>Answered by:</strong> <%= answer.user.try(:name) %>
+        <%= link_to "Follow User", follow_user_path(@question.slug, answer.user.slug), class: "follow_user" %>
+      </span>
+      <span>
+        <strong>Topic: </strong> <%= @question.topic.try(:name) %>
+        <%= link_to "Follow Topic", follow_topic_path(@question.slug, @question.topic.slug), class: "follow_topic" %>
+      </span>
+    </li>
+    <% end -%>
+  </ul>
+</div>
